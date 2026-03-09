@@ -1,16 +1,16 @@
 # Open University Student Retention & Performance Analysis
 
-## 📌 Executive Summary
+## Executive Summary
 This project analyzes the Open University Learning Analytics Dataset (OULAD) using PostgreSQL to uncover the underlying drivers of student retention, demographic performance gaps, and the impact of virtual engagement. By engineering a relational database and querying over 10 million rows of behavioral logs alongside academic records, this analysis provides actionable, data-driven insights to help educational stakeholders identify at-risk students and standardize curriculum difficulty.
 
-## 🛠️ Tech Stack & Skills Highlighted
+## Tech Stack & Skills Highlighted
 * **Relational Database:** PostgreSQL (v18.3), pgAdmin 4
 * **Query Language:** SQL
 * **Techniques:** Common Table Expressions (CTEs), Window Functions (`NTILE`, `PARTITION BY`), Conditional Aggregations (`CASE WHEN`), Multi-table `JOIN`s, Data Type Casting.
 
 ---
 
-## 🔍 Core Business Insights
+## Core Business Insights
 
 ### 1. The Behavioral Cliff (Digital Engagement as a Leading Indicator)
 There is a massive, quantifiable drop-off in digital engagement between passing and failing cohorts. 
@@ -28,7 +28,7 @@ There is a strict, linear correlation between a student's prior education level 
 
 ---
 
-## 🏗️ Data Architecture & Engineering Challenges
+## Data Architecture & Engineering Challenges
 The database was locally architected using 7 interconnected tables. Working with raw, uncleaned Kaggle data presented several real-world data ingestion challenges:
 
 * **Handling Nulls & Strict Constraints:** The raw CSV data contained thousands of empty text strings (`""`) in numeric columns (such as dates and scores). To prevent PostgreSQL `COPY` import failures, tables were dynamically rebuilt using `VARCHAR(20)` to successfully ingest the dirty data. `UPDATE` and `ALTER TABLE` scripts were then executed to cast empty strings to true SQL `NULL` values, restoring mathematical `INT`/`FLOAT` integrity for analysis.
@@ -37,8 +37,8 @@ The database was locally architected using 7 interconnected tables. Working with
 
 ---
 
-## 📂 Repository Structure
-* `01_database_setup_and_cleaning.sql`: The DDL/ETL script detailing table creation and data type casting.
-* `02_exploratory_data_analysis.sql`: Queries validating table grain, missing data volume, and categorical baselines.
-* `03_core_business_analysis.sql`: The primary analytical script containing CTEs and Window Functions.
-* `/results/`: Folder containing the exported CSV data outputs for the four core business questions.
+## Repository Structure
+* `/Queries/01_database_setup_and_cleaning.sql`: The DDL/ETL script detailing table creation and data type casting.
+* `/Queries/02_exploratory_data_analysis.sql`: Queries validating table grain, missing data volume, and categorical baselines.
+* `/Queries/03_core_business_analysis.sql`: The primary analytical script containing CTEs and Window Functions.
+* `/Outputs/`: Folder containing the exported CSV data outputs for the four core business questions.
