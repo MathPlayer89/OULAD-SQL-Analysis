@@ -1,0 +1,9 @@
+# Ignore the massive raw CSV data files (Exceeds GitHub's 100MB limit)
+Data/
+
+# Ignore rough drafts and personal working notes
+Raw_Notes/
+
+# Ignore system files (Standard industry practice)
+.DS_Store
+Thumbs.db
